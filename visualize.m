@@ -5,7 +5,7 @@ T = readtable('./positives.csv', 'Delimiter', ',');
 
 for i=2:length(T.Properties.VariableNames)
     TotalCases = T.(char(T.Properties.VariableNames(i)));
-    NewCases = [TotalCases(2)];
+    NewCases = [TotalCases(1)];
     for j=2:length(TotalCases)
         NewCases(j) = TotalCases(j) - TotalCases(j-1);
     end
