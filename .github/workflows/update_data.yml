@@ -2,12 +2,17 @@
 name: Daily data updater
 on:
   schedule:
-    - cron: '1 21 * * *'
+    - cron: '31 22 * * *'
 jobs:
-  labeler:
+  fetch:
+    name: Fetch data
     runs-on: ubuntu-latest
     steps:
-      - uses: ctrlaltf2/pyrun@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_REPOSITORY: ${{ github.repository }}
+    - uses: actions/checkout@v2
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_REPOSITORY: ${{ github.repository }}
+    - name: Setup python
+      uses: actions/setup-python@v1
+    - name: Fetch data from Health Department website
+      run: python3 ./fetch_data.py
