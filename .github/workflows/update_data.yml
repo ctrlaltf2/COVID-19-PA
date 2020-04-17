@@ -1,5 +1,5 @@
 ---
-name: Pull request labeler
+name: Daily data updater
 on:
   schedule:
     - cron: '1 21 * * *'
@@ -11,5 +11,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
-          LABEL_MAPPINGS_FILE: .github/labeler.yml
-
