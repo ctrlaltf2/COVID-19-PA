@@ -2,7 +2,7 @@
 name: Daily data updater
 on:
   schedule:
-    - cron: '53 22 * * *'
+    - cron: '56 22 * * *'
 jobs:
   fetch:
     name: Fetch data
