@@ -2,7 +2,7 @@
 name: Daily data updater
 on:
   schedule:
-    - cron: '31 22 * * *'
+    - cron: '36 22 * * *'
 jobs:
   fetch:
     name: Fetch data
@@ -16,3 +16,14 @@ jobs:
       uses: actions/setup-python@v1
     - name: Fetch data from Health Department website
       run: python3 ./fetch_data.py
+    - name : Push updated data to repo
+    - uses: stefanzweifel/git-auto-commit-action@v4.1.2
+      with:
+        commit_message: Update data
+        branch: master
+        commit_options: '--no-verify --signoff'
+        file_pattern: \*.csv
+        repository: .
+        commit_user_name: ctrlaltf2
+        commit_user_email: ctrlaltf2@protonmail.ch
+        commit_author: ctrlaltf2 <ctrlaltf2@protonmail.ch>
