@@ -1,11 +1,11 @@
 clear
 clc
 
-T = readtable('./total_cases.csv');
+T = readtable('./positives.csv', 'Delimiter', ',');
 
 for i=2:length(T.Properties.VariableNames)
     TotalCases = T.(char(T.Properties.VariableNames(i)));
-    NewCases = [TotalCases(1)];
+    NewCases = [TotalCases(2)];
     for j=2:length(TotalCases)
         NewCases(j) = TotalCases(j) - TotalCases(j-1);
     end
