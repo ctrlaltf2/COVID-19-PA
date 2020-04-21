@@ -6,6 +6,8 @@ T = readtable('./positives.csv', 'Delimiter', ',');
 [r, c] = size(T);
 TotalCases = zeros(r, 1);
 
+disp(['n = ', string(r)])
+
 for i=2:length(T.Properties.VariableNames)
     TotalCases = TotalCases + T.(char(T.Properties.VariableNames(i)));
 end
