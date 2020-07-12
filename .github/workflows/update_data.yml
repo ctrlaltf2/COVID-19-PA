@@ -1,8 +1,9 @@
 ---
 name: Daily data updater
 on:
-  schedule:
-    - cron: '56 22 * * *'
+  push:
+    branches:
+      - disabled
 jobs:
   fetch:
     name: Fetch data
